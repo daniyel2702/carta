@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alicia ❤️</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            margin: 0;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+            max-width: 500px;
+            text-align: center;
+        }
+        .heart {
+            font-size: 80px;
+            color: black;
+            display: inline-block;
+            animation: bounce 1.5s infinite;
+        }
+        h2 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .buttons button {
+            font-size: 22px;
+            padding: 12px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            font-weight: bold;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+        }
+        .yes:hover {
+            background-color: #e60000;
+            transform: scale(1.2);
+        }
+        .no:hover {
+            background-color: #999;
+        }
+        .download-button {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 10px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        .emoji {
+            font-size: 100px;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para Alicia ❤️</h1>
+    <div class="card">
+        <div class="heart">🐼</div>
+        <h2>Alicia, ¿quieres ser mi San Valentín e ir a comer tacos?</h2>
+        <div class="buttons">
+            <button class="yes" onclick="yesResponse()">Sí</button>
+            <button class="no" onclick="noResponse()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function yesResponse() {
+            document.body.innerHTML = `
+                <div style='display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;'>
+                    <h1 style='color: white; font-size: 2.5rem;'>¡Te amo bb! ❤️</h1>
+                    <button class='small-button' onclick='secondYes()' style='margin-top: 20px; padding: 10px 20px; font-size: 16px; border: none; background-color: #ff4d4d; color: white; border-radius: 8px; cursor: pointer;'>Oprímeme</button>
+                </div>`;
+        }
+
+        function secondYes() {
+            document.body.innerHTML = `
+                <div style='display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;'>
+                    <h1 style='color: white; font-size: 2.5rem;'>Y también cogemos, ¿sí? 😉</h1>
+                    <div class='emoji'>😊</div>
+                    <button class='download-button' onclick='downloadPDF()'>Descárgame</button>
+                </div>`;
+        }
+
+        function noResponse() {
+            alert('Oh no, Alicia... 😢');
+        }
+
+        function downloadPDF() {
+            const link = document.createElement('a');
+            link.href = 'Paraalicia.pdf'; // Reemplaza con la ruta real del PDF
+            link.download = 'invitacion.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
